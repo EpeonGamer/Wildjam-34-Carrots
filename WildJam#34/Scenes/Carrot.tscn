@@ -1,0 +1,60 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Carrot.gd" type="Script" id=1]
+[ext_resource path="res://Import/Carrot16.png" type="Texture" id=2]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 0.888041
+height = 5.14664
+
+[sub_resource type="CircleShape2D" id=2]
+
+[sub_resource type="Animation" id=3]
+resource_name = "finish"
+length = 0.5
+step = 0.025
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 0, 0, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[node name="Carrot" type="StaticBody2D"]
+scale = Vector2( 2, 2 )
+collision_layer = 3
+script = ExtResource( 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, 0.530537 )
+rotation = 1.5708
+shape = SubResource( 1 )
+disabled = true
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 0, -2.71487 )
+texture = ExtResource( 2 )
+
+[node name="Grow" type="Timer" parent="."]
+
+[node name="Senser" type="Area2D" parent="."]
+position = Vector2( 0, -2.71487 )
+collision_layer = 3
+
+[node name="Growsense" type="CollisionShape2D" parent="Senser"]
+position = Vector2( 0, 2.71568 )
+shape = SubResource( 2 )
+
+[node name="Audio" type="AudioStreamPlayer" parent="."]
+volume_db = 5.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/finish = SubResource( 3 )
+
+[connection signal="timeout" from="Grow" to="." method="_on_Grow_timeout"]

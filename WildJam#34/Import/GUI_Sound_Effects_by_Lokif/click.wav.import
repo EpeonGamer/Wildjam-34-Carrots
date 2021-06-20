@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/click.wav-4e6710b83a66c7fa00c0416f9e3a98ba.sample"
+
+[deps]
+
+source_file="res://Import/GUI_Sound_Effects_by_Lokif/click.wav"
+dest_files=[ "res://.import/click.wav-4e6710b83a66c7fa00c0416f9e3a98ba.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
